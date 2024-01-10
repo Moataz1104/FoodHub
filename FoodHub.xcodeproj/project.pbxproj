@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0016073D2B4F25E700C1BFDD /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0016073C2B4F25E700C1BFDD /* UIColor+Extensions.swift */; };
 		004526322B4DD9720035F0C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004526312B4DD9720035F0C0 /* AppDelegate.swift */; };
 		004526342B4DD9720035F0C0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004526332B4DD9720035F0C0 /* SceneDelegate.swift */; };
 		004526362B4DD9720035F0C0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004526352B4DD9720035F0C0 /* ViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0016073C2B4F25E700C1BFDD /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		0045262E2B4DD9720035F0C0 /* FoodHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		004526312B4DD9720035F0C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		004526332B4DD9720035F0C0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -42,6 +44,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		001607382B4ED9F600C1BFDD /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0045263D2B4DD9730035F0C0 /* Assets.xcassets */,
+				0045263F2B4DD9730035F0C0 /* LaunchScreen.storyboard */,
+				0045263A2B4DD9720035F0C0 /* FoodHub.xcdatamodeld */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		001607392B4EDA4400C1BFDD /* Etensions */ = {
+			isa = PBXGroup;
+			children = (
+				0016073C2B4F25E700C1BFDD /* UIColor+Extensions.swift */,
+			);
+			name = Etensions;
+			sourceTree = "<group>";
+		};
+		0016073A2B4EDADE00C1BFDD /* App */ = {
+			isa = PBXGroup;
+			children = (
+				0016073B2B4EDAE900C1BFDD /* WelcomeScreen */,
+			);
+			name = App;
+			sourceTree = "<group>";
+		};
+		0016073B2B4EDAE900C1BFDD /* WelcomeScreen */ = {
+			isa = PBXGroup;
+			children = (
+				004526352B4DD9720035F0C0 /* ViewController.swift */,
+			);
+			name = WelcomeScreen;
+			sourceTree = "<group>";
+		};
 		004526252B4DD9720035F0C0 = {
 			isa = PBXGroup;
 			children = (
@@ -65,11 +101,10 @@
 			children = (
 				004526312B4DD9720035F0C0 /* AppDelegate.swift */,
 				004526332B4DD9720035F0C0 /* SceneDelegate.swift */,
-				004526352B4DD9720035F0C0 /* ViewController.swift */,
-				0045263D2B4DD9730035F0C0 /* Assets.xcassets */,
-				0045263F2B4DD9730035F0C0 /* LaunchScreen.storyboard */,
 				004526422B4DD9730035F0C0 /* Info.plist */,
-				0045263A2B4DD9720035F0C0 /* FoodHub.xcdatamodeld */,
+				0016073A2B4EDADE00C1BFDD /* App */,
+				001607392B4EDA4400C1BFDD /* Etensions */,
+				001607382B4ED9F600C1BFDD /* Resources */,
 			);
 			path = FoodHub;
 			sourceTree = "<group>";
@@ -206,6 +241,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				004526362B4DD9720035F0C0 /* ViewController.swift in Sources */,
+				0016073D2B4F25E700C1BFDD /* UIColor+Extensions.swift in Sources */,
 				004526322B4DD9720035F0C0 /* AppDelegate.swift in Sources */,
 				004526342B4DD9720035F0C0 /* SceneDelegate.swift in Sources */,
 				0045263C2B4DD9720035F0C0 /* FoodHub.xcdatamodeld in Sources */,
