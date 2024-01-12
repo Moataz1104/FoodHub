@@ -10,6 +10,7 @@
 		0016073D2B4F25E700C1BFDD /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0016073C2B4F25E700C1BFDD /* UIColor+Extensions.swift */; };
 		0016073F2B4F28E100C1BFDD /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0016073E2B4F28E100C1BFDD /* UIButton+Extensions.swift */; };
 		001607412B51AAB300C1BFDD /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001607402B51AAB300C1BFDD /* UILabel+Extensions.swift */; };
+		001607432B51B47200C1BFDD /* UITextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001607422B51B47200C1BFDD /* UITextField+Extensions.swift */; };
 		004526322B4DD9720035F0C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004526312B4DD9720035F0C0 /* AppDelegate.swift */; };
 		004526342B4DD9720035F0C0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004526332B4DD9720035F0C0 /* SceneDelegate.swift */; };
 		004526362B4DD9720035F0C0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004526352B4DD9720035F0C0 /* ViewController.swift */; };
@@ -23,6 +24,7 @@
 		0016073C2B4F25E700C1BFDD /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		0016073E2B4F28E100C1BFDD /* UIButton+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extensions.swift"; sourceTree = "<group>"; };
 		001607402B51AAB300C1BFDD /* UILabel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
+		001607422B51B47200C1BFDD /* UITextField+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
 		0045262E2B4DD9720035F0C0 /* FoodHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		004526312B4DD9720035F0C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		004526332B4DD9720035F0C0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 				0016073C2B4F25E700C1BFDD /* UIColor+Extensions.swift */,
 				0016073E2B4F28E100C1BFDD /* UIButton+Extensions.swift */,
 				001607402B51AAB300C1BFDD /* UILabel+Extensions.swift */,
+				001607422B51B47200C1BFDD /* UITextField+Extensions.swift */,
 			);
 			name = Etensions;
 			sourceTree = "<group>";
@@ -247,6 +250,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				004526362B4DD9720035F0C0 /* ViewController.swift in Sources */,
+				001607432B51B47200C1BFDD /* UITextField+Extensions.swift in Sources */,
 				0016073D2B4F25E700C1BFDD /* UIColor+Extensions.swift in Sources */,
 				004526322B4DD9720035F0C0 /* AppDelegate.swift in Sources */,
 				004526342B4DD9720035F0C0 /* SceneDelegate.swift in Sources */,
