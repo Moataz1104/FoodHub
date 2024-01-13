@@ -13,6 +13,8 @@
 		001607432B51B47200C1BFDD /* UITextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001607422B51B47200C1BFDD /* UITextField+Extensions.swift */; };
 		0016074A2B52EFD700C1BFDD /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001607492B52EFD700C1BFDD /* UIView+Extensions.swift */; };
 		0016074D2B52FEB600C1BFDD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0016074C2B52FEB600C1BFDD /* Constants.swift */; };
+		001607512B534A5700C1BFDD /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001607502B534A5700C1BFDD /* WelcomeViewModel.swift */; };
+		001607542B534BFE00C1BFDD /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001607532B534BFE00C1BFDD /* SignUpViewController.swift */; };
 		004526322B4DD9720035F0C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004526312B4DD9720035F0C0 /* AppDelegate.swift */; };
 		004526342B4DD9720035F0C0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004526332B4DD9720035F0C0 /* SceneDelegate.swift */; };
 		004526362B4DD9720035F0C0 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004526352B4DD9720035F0C0 /* WelcomeViewController.swift */; };
@@ -29,6 +31,8 @@
 		001607422B51B47200C1BFDD /* UITextField+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
 		001607492B52EFD700C1BFDD /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		0016074C2B52FEB600C1BFDD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		001607502B534A5700C1BFDD /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
+		001607532B534BFE00C1BFDD /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		0045262E2B4DD9720035F0C0 /* FoodHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		004526312B4DD9720035F0C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		004526332B4DD9720035F0C0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				0016073B2B4EDAE900C1BFDD /* WelcomeScreen */,
+				001607522B534BB300C1BFDD /* SignUpScreen */,
 			);
 			name = App;
 			sourceTree = "<group>";
@@ -88,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				004526352B4DD9720035F0C0 /* WelcomeViewController.swift */,
+				001607502B534A5700C1BFDD /* WelcomeViewModel.swift */,
 			);
 			name = WelcomeScreen;
 			sourceTree = "<group>";
@@ -99,6 +105,14 @@
 			);
 			name = "New Group";
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		001607522B534BB300C1BFDD /* SignUpScreen */ = {
+			isa = PBXGroup;
+			children = (
+				001607532B534BFE00C1BFDD /* SignUpViewController.swift */,
+			);
+			name = SignUpScreen;
 			sourceTree = "<group>";
 		};
 		004526252B4DD9720035F0C0 = {
@@ -270,6 +284,8 @@
 				0016073D2B4F25E700C1BFDD /* UIColor+Extensions.swift in Sources */,
 				004526322B4DD9720035F0C0 /* AppDelegate.swift in Sources */,
 				0016074D2B52FEB600C1BFDD /* Constants.swift in Sources */,
+				001607542B534BFE00C1BFDD /* SignUpViewController.swift in Sources */,
+				001607512B534A5700C1BFDD /* WelcomeViewModel.swift in Sources */,
 				004526342B4DD9720035F0C0 /* SceneDelegate.swift in Sources */,
 				0045263C2B4DD9720035F0C0 /* FoodHub.xcdatamodeld in Sources */,
 				0016073F2B4F28E100C1BFDD /* UIButton+Extensions.swift in Sources */,

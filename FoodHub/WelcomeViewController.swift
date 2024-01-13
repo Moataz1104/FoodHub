@@ -6,16 +6,21 @@
 //
 
 import UIKit
-
+import RxSwift
+import RxCocoa
 class WelcomeViewController: UIViewController {
     
     private var gradientLayer:CAGradientLayer?
+    private let viewModel=WelcomeViewModel()
+    private let disposeBag = DisposeBag()
 
     
 //    MARK: - View Controller life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setViewsHierarchy()
+        tapStartButton()
+        tapSignIn()
     }
     
     override func viewDidLayoutSubviews() {
@@ -284,6 +289,22 @@ class WelcomeViewController: UIViewController {
         view.layer.addSublayer(gradiant)
         self.gradientLayer = gradiant
         
+    }
+    
+    
+//    MARK: - Navigation
+    func tapStartButton(){
+        startButton.rx.tap
+            .subscribe { [weak self] _  in
+                self?.navigationController?.pushViewController(SignUpViewController(), animated: true)
+            }.disposed(by: disposeBag)
+    }
+//    TODO: - Handle navigation(Just uncomment)
+    func tapSignIn(){
+        signInButton.rx.tap
+            .subscribe { /*[weak self]*/ _ in
+//                self?.navigationController?.pushViewController(LogInViewController(), animated: true)
+            }.disposed(by: disposeBag)
     }
     
     
