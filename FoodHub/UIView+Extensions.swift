@@ -31,9 +31,3 @@ extension UIView{
     }
     
 }
-//static var quarterCircle:UIImageView={
-//    let image=UIImage(named: "Qcircle")?.withRenderingMode(.alwaysOriginal)
-//    let imageView=UIImageView(image: image)
-//    imageView.translatesAutoresizingMaskIntoConstraints=false
-//    return imageView
-//}()

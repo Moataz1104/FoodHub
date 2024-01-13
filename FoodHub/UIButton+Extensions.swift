@@ -21,7 +21,7 @@ extension UIButton {
             configureButton(button, imageName: "FaceBookLogo", title: "FACEBOOK")
             
         case .google:
-            configureButton(button, imageName: "GoogleLogo", title: "Google")
+            configureButton(button, imageName: "GoogleLogo", title: "GOOGLE")
         }
         
         return button
@@ -32,7 +32,7 @@ extension UIButton {
         button.backgroundColor = .white
         button.setTitle(title, for: .normal)
         button.setTitleColor(.black, for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 13)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         button.translatesAutoresizingMaskIntoConstraints = false
     }
     
@@ -41,7 +41,7 @@ extension UIButton {
         let button = UIButton(type: .system)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
         button.layer.cornerRadius=28.5
-        button.backgroundColor = UIColor(hex: 0xFE724C)
+        button.backgroundColor = UIColor(hex: k.orangeColor)
         button.setTitleShadowColor(UIColor(hex: 0x7A81BE29).withAlphaComponent(16), for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints=false
