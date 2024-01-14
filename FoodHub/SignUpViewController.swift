@@ -6,8 +6,12 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class SignUpViewController: UIViewController {
+    
+    private let disposeBag = DisposeBag()
 
     
     
@@ -18,6 +22,9 @@ class SignUpViewController: UIViewController {
         view.backgroundColor = .white
         navigationController?.navigationBar.isHidden=true
         setViewsHierarchy()
+        userNameTextFieldEvents()
+        emailTextFieldEvents()
+        passwordTextFieldEvents()
 
     }
     
@@ -346,6 +353,71 @@ class SignUpViewController: UIViewController {
         signUpView.addSubview(googleButton)
     }
 
+    
+//    MARK: - Text Fields control events
+    
+    func userNameTextFieldEvents(){
+        
+        userNameTextField.rx.controlEvent(.editingDidBegin)
+            .subscribe { [weak self] _ in
+                guard let self = self else {return}
+                self.handleTextFieldAppearance(for: self.userNameTextField)
+            }.disposed(by: disposeBag)
+        
+        
+        userNameTextField.rx.controlEvent(.editingDidEnd)
+            .subscribe { [weak self] _ in
+                guard let self = self else {return}
+                self.resetTextFieldAppearance(for: self.userNameTextField)
+                
+            }.disposed(by: disposeBag)
+    }
+    
+    func emailTextFieldEvents(){
+        
+        emailTextField.rx.controlEvent(.editingDidBegin)
+            .subscribe { [weak self] _ in
+                guard let self = self else {return}
+                self.handleTextFieldAppearance(for: self.emailTextField)
+            }.disposed(by: disposeBag)
+        
+        
+        emailTextField.rx.controlEvent(.editingDidEnd)
+            .subscribe { [weak self] _ in
+                guard let self = self else {return}
+                self.resetTextFieldAppearance(for: self.emailTextField)
+                
+            }.disposed(by: disposeBag)
+    }
+    
+    func passwordTextFieldEvents(){
+        
+        passwordTextField.rx.controlEvent(.editingDidBegin)
+            .subscribe { [weak self] _ in
+                guard let self = self else {return}
+                self.handleTextFieldAppearance(for: self.passwordTextField)
+            }.disposed(by: disposeBag)
+        
+        
+        passwordTextField.rx.controlEvent(.editingDidEnd)
+            .subscribe { [weak self] _ in
+                guard let self = self else {return}
+                self.resetTextFieldAppearance(for: self.passwordTextField)
+                
+            }.disposed(by: disposeBag)
+    }
+    
+    private func handleTextFieldAppearance(for textField:UITextField){
+        textField.borderStyle = .none
+        textField.layer.borderWidth=1
+        textField.layer.borderColor = UIColor(hex: k.orangeColor).cgColor
+    }
+    
+    private func resetTextFieldAppearance(for textField:UITextField){
+        textField.borderStyle = .roundedRect
+        textField.layer.borderWidth=0
+        textField.layer.borderColor = nil
+    }
     
     //    MARK: - Navigation
 
