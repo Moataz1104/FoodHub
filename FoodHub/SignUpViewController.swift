@@ -12,7 +12,7 @@ import RxCocoa
 class SignUpViewController: UIViewController {
     
     private let disposeBag = DisposeBag()
-
+    private let tapGesture = UITapGestureRecognizer()
     
     
     //    MARK: - View Controller life cycle
@@ -25,6 +25,7 @@ class SignUpViewController: UIViewController {
         userNameTextFieldEvents()
         emailTextFieldEvents()
         passwordTextFieldEvents()
+        bindToTapGesture()
 
     }
     
@@ -351,7 +352,11 @@ class SignUpViewController: UIViewController {
         signUpView.addSubview(label)
         signUpView.addSubview(faceButton)
         signUpView.addSubview(googleButton)
+        
+//        Tap gesture to recognize user taps
+        view.addGestureRecognizer(tapGesture)
     }
+    
 
     
 //    MARK: - Text Fields control events
@@ -422,6 +427,14 @@ class SignUpViewController: UIViewController {
     //    MARK: - Navigation
 
     
+//    MARK: - private functions
+    
+    private func bindToTapGesture(){
+        tapGesture.rx.event.bind { [weak self] _ in
+            self?.view.endEditing(true)
+        }.disposed(by: disposeBag)
+        
+    }
 
 
 }
