@@ -11,7 +11,7 @@
 		0016073F2B4F28E100C1BFDD /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0016073E2B4F28E100C1BFDD /* UIButton+Extensions.swift */; };
 		001607412B51AAB300C1BFDD /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001607402B51AAB300C1BFDD /* UILabel+Extensions.swift */; };
 		001607432B51B47200C1BFDD /* UITextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001607422B51B47200C1BFDD /* UITextField+Extensions.swift */; };
-		0016074A2B52EFD700C1BFDD /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001607492B52EFD700C1BFDD /* UIView+Extensions.swift */; };
+		0016074A2B52EFD700C1BFDD /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001607492B52EFD700C1BFDD /* UIImageView+Extensions.swift */; };
 		0016074D2B52FEB600C1BFDD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0016074C2B52FEB600C1BFDD /* Constants.swift */; };
 		001607512B534A5700C1BFDD /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001607502B534A5700C1BFDD /* WelcomeViewModel.swift */; };
 		001607542B534BFE00C1BFDD /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001607532B534BFE00C1BFDD /* SignUpViewController.swift */; };
@@ -29,7 +29,7 @@
 		0016073E2B4F28E100C1BFDD /* UIButton+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extensions.swift"; sourceTree = "<group>"; };
 		001607402B51AAB300C1BFDD /* UILabel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
 		001607422B51B47200C1BFDD /* UITextField+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
-		001607492B52EFD700C1BFDD /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		001607492B52EFD700C1BFDD /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
 		0016074C2B52FEB600C1BFDD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		001607502B534A5700C1BFDD /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
 		001607532B534BFE00C1BFDD /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -75,7 +75,7 @@
 				0016073E2B4F28E100C1BFDD /* UIButton+Extensions.swift */,
 				001607402B51AAB300C1BFDD /* UILabel+Extensions.swift */,
 				001607422B51B47200C1BFDD /* UITextField+Extensions.swift */,
-				001607492B52EFD700C1BFDD /* UIView+Extensions.swift */,
+				001607492B52EFD700C1BFDD /* UIImageView+Extensions.swift */,
 			);
 			name = Etensions;
 			sourceTree = "<group>";
@@ -279,7 +279,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				004526362B4DD9720035F0C0 /* WelcomeViewController.swift in Sources */,
-				0016074A2B52EFD700C1BFDD /* UIView+Extensions.swift in Sources */,
+				0016074A2B52EFD700C1BFDD /* UIImageView+Extensions.swift in Sources */,
 				001607432B51B47200C1BFDD /* UITextField+Extensions.swift in Sources */,
 				0016073D2B4F25E700C1BFDD /* UIColor+Extensions.swift in Sources */,
 				004526322B4DD9720035F0C0 /* AppDelegate.swift in Sources */,

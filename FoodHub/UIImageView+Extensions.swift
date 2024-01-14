@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension UIView{
+extension UIImageView{
     enum SharedViewType{
         case dcircle1
         case qcircle2

@@ -216,7 +216,7 @@ class WelcomeViewController: UIViewController {
         let googleButtonCons = [
             googleButton.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 20),
             googleButton.trailingAnchor.constraint(equalTo: authView.trailingAnchor, constant: -15),
-            googleButton.widthAnchor.constraint(equalTo: authView.widthAnchor, multiplier: 0.4), // Adjust the multiplier as needed
+            googleButton.widthAnchor.constraint(equalTo: authView.widthAnchor, multiplier: 0.4),
             googleButton.heightAnchor.constraint(equalToConstant: 50)
             
         ]
