@@ -15,6 +15,10 @@ class SignUpViewController: UIViewController {
     private let disposeBag = DisposeBag()
     private let tapGesture = UITapGestureRecognizer()
     
+    private var emailIsValidSubject = BehaviorRelay<Bool>(value: false)
+    private var passwordIsValidSubject = BehaviorRelay<Bool>(value: false)
+
+    
     
     //    MARK: - View Controller life cycle
 
@@ -33,6 +37,7 @@ class SignUpViewController: UIViewController {
         emailValidation()
         passwordValidation()
         
+        handleMainButtonBehavior()
 
     }
     
@@ -366,7 +371,7 @@ class SignUpViewController: UIViewController {
     
 
     
-//    MARK: - Text Fields control events
+//    MARK: - Text Fields Binding and Behavior
     
     private func bindToUserNameTextField() {
         userNameTextField.rx.controlEvent(.editingDidBegin)
@@ -440,9 +445,10 @@ class SignUpViewController: UIViewController {
     private func emailValidation() {
         viewModel.isvalidEmail()
             .observe(on: MainScheduler.instance)
-            .subscribe { isValid in
+            .subscribe {[weak self] isValid in
+                self?.emailIsValidSubject.accept(isValid)
                 if !isValid {
-                    self.present(Validation.popAlert(alertType: .invalidEmail), animated: true)
+                    self?.present(Validation.popAlert(alertType: .invalidEmail), animated: true)
                 }
             }
             .disposed(by: disposeBag)
@@ -451,9 +457,10 @@ class SignUpViewController: UIViewController {
     private func passwordValidation() {
         viewModel.isValidPassword()
             .observe(on: MainScheduler.instance)
-            .subscribe { isValid in
+            .subscribe {[weak self] isValid in
+                self?.passwordIsValidSubject.accept(isValid)
                 if !isValid {
-                    self.present(Validation.popAlert(alertType: .invalidPassword), animated: true)
+                    self?.present(Validation.popAlert(alertType: .invalidPassword), animated: true)
                 }
             }
             .disposed(by: disposeBag)
@@ -465,6 +472,15 @@ class SignUpViewController: UIViewController {
             self?.view.endEditing(true)
         }.disposed(by: disposeBag)
         
+    }
+    
+    private func handleMainButtonBehavior(){
+        Observable
+            .combineLatest(emailIsValidSubject, passwordIsValidSubject)
+            .subscribe(onNext: { [weak self] (isEmailValid, isPasswordValid) in
+                let isButtonEnabled = isEmailValid && isPasswordValid
+                self?.mainButton.isEnabled = isButtonEnabled
+            }).disposed(by: disposeBag)
     }
     
     //    MARK: - Navigation
