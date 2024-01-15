@@ -15,6 +15,8 @@
 		0016074D2B52FEB600C1BFDD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0016074C2B52FEB600C1BFDD /* Constants.swift */; };
 		001607512B534A5700C1BFDD /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001607502B534A5700C1BFDD /* WelcomeViewModel.swift */; };
 		001607542B534BFE00C1BFDD /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001607532B534BFE00C1BFDD /* SignUpViewController.swift */; };
+		001607562B5490FF00C1BFDD /* TextFieldValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001607552B5490FF00C1BFDD /* TextFieldValidation.swift */; };
+		001607582B54912700C1BFDD /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001607572B54912700C1BFDD /* SignUpViewModel.swift */; };
 		004526322B4DD9720035F0C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004526312B4DD9720035F0C0 /* AppDelegate.swift */; };
 		004526342B4DD9720035F0C0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004526332B4DD9720035F0C0 /* SceneDelegate.swift */; };
 		004526362B4DD9720035F0C0 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004526352B4DD9720035F0C0 /* WelcomeViewController.swift */; };
@@ -33,6 +35,8 @@
 		0016074C2B52FEB600C1BFDD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		001607502B534A5700C1BFDD /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
 		001607532B534BFE00C1BFDD /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		001607552B5490FF00C1BFDD /* TextFieldValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldValidation.swift; sourceTree = "<group>"; };
+		001607572B54912700C1BFDD /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		0045262E2B4DD9720035F0C0 /* FoodHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		004526312B4DD9720035F0C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		004526332B4DD9720035F0C0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -98,12 +102,13 @@
 			name = WelcomeScreen;
 			sourceTree = "<group>";
 		};
-		0016074B2B52FE9D00C1BFDD /* New Group */ = {
+		0016074B2B52FE9D00C1BFDD /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
 				0016074C2B52FEB600C1BFDD /* Constants.swift */,
+				001607552B5490FF00C1BFDD /* TextFieldValidation.swift */,
 			);
-			name = "New Group";
+			name = Helpers;
 			path = Resources;
 			sourceTree = "<group>";
 		};
@@ -111,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				001607532B534BFE00C1BFDD /* SignUpViewController.swift */,
+				001607572B54912700C1BFDD /* SignUpViewModel.swift */,
 			);
 			name = SignUpScreen;
 			sourceTree = "<group>";
@@ -141,7 +147,7 @@
 				004526422B4DD9730035F0C0 /* Info.plist */,
 				0016073A2B4EDADE00C1BFDD /* App */,
 				001607392B4EDA4400C1BFDD /* Etensions */,
-				0016074B2B52FE9D00C1BFDD /* New Group */,
+				0016074B2B52FE9D00C1BFDD /* Helpers */,
 				001607382B4ED9F600C1BFDD /* Resources */,
 			);
 			path = FoodHub;
@@ -282,7 +288,9 @@
 				0016074A2B52EFD700C1BFDD /* UIImageView+Extensions.swift in Sources */,
 				001607432B51B47200C1BFDD /* UITextField+Extensions.swift in Sources */,
 				0016073D2B4F25E700C1BFDD /* UIColor+Extensions.swift in Sources */,
+				001607562B5490FF00C1BFDD /* TextFieldValidation.swift in Sources */,
 				004526322B4DD9720035F0C0 /* AppDelegate.swift in Sources */,
+				001607582B54912700C1BFDD /* SignUpViewModel.swift in Sources */,
 				0016074D2B52FEB600C1BFDD /* Constants.swift in Sources */,
 				001607542B534BFE00C1BFDD /* SignUpViewController.swift in Sources */,
 				001607512B534A5700C1BFDD /* WelcomeViewModel.swift in Sources */,

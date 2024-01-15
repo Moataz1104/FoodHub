@@ -11,6 +11,7 @@ import RxCocoa
 
 class SignUpViewController: UIViewController {
     
+    private let viewModel = SignUpViewModel()
     private let disposeBag = DisposeBag()
     private let tapGesture = UITapGestureRecognizer()
     
@@ -22,10 +23,16 @@ class SignUpViewController: UIViewController {
         view.backgroundColor = .white
         navigationController?.navigationBar.isHidden=true
         setViewsHierarchy()
-        userNameTextFieldEvents()
-        emailTextFieldEvents()
-        passwordTextFieldEvents()
         bindToTapGesture()
+        
+//        Bind Text Fields
+        bindToUserNameTextField()
+        bindToEmailTextField()
+        bindToPasswordTextField()
+//        Input Validation
+        emailValidation()
+        passwordValidation()
+        
 
     }
     
@@ -361,78 +368,125 @@ class SignUpViewController: UIViewController {
     
 //    MARK: - Text Fields control events
     
-    func userNameTextFieldEvents(){
-        
+    private func bindToUserNameTextField() {
         userNameTextField.rx.controlEvent(.editingDidBegin)
-            .subscribe { [weak self] _ in
-                guard let self = self else {return}
-                self.handleTextFieldAppearance(for: self.userNameTextField)
-            }.disposed(by: disposeBag)
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext:  {[weak self] _ in
+                guard let self = self else { return}
+                self.handleTextFieldsBehavior(for: self.userNameTextField)
+            }).disposed(by: disposeBag)
         
         
         userNameTextField.rx.controlEvent(.editingDidEnd)
-            .subscribe { [weak self] _ in
-                guard let self = self else {return}
-                self.resetTextFieldAppearance(for: self.userNameTextField)
-                
-            }.disposed(by: disposeBag)
+            .do(onNext: {[weak self] _ in
+                guard let self = self else { return}
+                DispatchQueue.main.async {
+                    self.resetTextFieldsBehavior(for: self.userNameTextField)
+                }
+            })
+            .map { [weak self] in
+                return self?.userNameTextField.text ?? "" }
+            .filter { !$0.isEmpty }
+            .bind(to: viewModel.userNameInputSubject)
+            .disposed(by: disposeBag)
     }
     
-    func emailTextFieldEvents(){
-        
+    private func bindToEmailTextField() {
         emailTextField.rx.controlEvent(.editingDidBegin)
-            .subscribe { [weak self] _ in
-                guard let self = self else {return}
-                self.handleTextFieldAppearance(for: self.emailTextField)
-            }.disposed(by: disposeBag)
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext:  {[weak self] _ in
+                guard let self = self else { return}
+                self.handleTextFieldsBehavior(for: self.emailTextField)
+            }).disposed(by: disposeBag)
         
         
         emailTextField.rx.controlEvent(.editingDidEnd)
-            .subscribe { [weak self] _ in
-                guard let self = self else {return}
-                self.resetTextFieldAppearance(for: self.emailTextField)
-                
-            }.disposed(by: disposeBag)
+            .do(onNext: {[weak self] _ in
+                guard let self = self else { return}
+                DispatchQueue.main.async {
+                    self.resetTextFieldsBehavior(for: self.emailTextField)
+                }
+            })
+            .map { [weak self] in self?.emailTextField.text ?? "" }
+            .filter { !$0.isEmpty }
+            .bind(to: viewModel.emailInputSubject)
+            .disposed(by: disposeBag)
     }
     
-    func passwordTextFieldEvents(){
-        
+    private func bindToPasswordTextField(){
         passwordTextField.rx.controlEvent(.editingDidBegin)
-            .subscribe { [weak self] _ in
-                guard let self = self else {return}
-                self.handleTextFieldAppearance(for: self.passwordTextField)
-            }.disposed(by: disposeBag)
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext:  {[weak self] _ in
+                guard let self = self else { return}
+                self.handleTextFieldsBehavior(for: self.passwordTextField)
+            }).disposed(by: disposeBag)
+
         
         
         passwordTextField.rx.controlEvent(.editingDidEnd)
-            .subscribe { [weak self] _ in
-                guard let self = self else {return}
-                self.resetTextFieldAppearance(for: self.passwordTextField)
-                
-            }.disposed(by: disposeBag)
+            .do(onNext: {[weak self] _ in
+                guard let self = self else { return}
+                DispatchQueue.main.async {
+                    self.resetTextFieldsBehavior(for: self.passwordTextField)
+                }
+            })
+            .map{[weak self] in self?.passwordTextField.text ?? ""}
+            .filter{!$0.isEmpty}
+            .bind(to: viewModel.passwordInputSubject)
+            .disposed(by: disposeBag)
     }
     
-    private func handleTextFieldAppearance(for textField:UITextField){
+    
+    private func emailValidation() {
+        viewModel.isvalidEmail()
+            .observe(on: MainScheduler.instance)
+            .subscribe { isValid in
+                if !isValid {
+                    self.present(Validation.popAlert(alertType: .invalidEmail), animated: true)
+                }
+            }
+            .disposed(by: disposeBag)
+    }
+
+    private func passwordValidation() {
+        viewModel.isValidPassword()
+            .observe(on: MainScheduler.instance)
+            .subscribe { isValid in
+                if !isValid {
+                    self.present(Validation.popAlert(alertType: .invalidPassword), animated: true)
+                }
+            }
+            .disposed(by: disposeBag)
+    }
+    
+    private func bindToTapGesture(){
+        tapGesture.rx.event.observe(on: MainScheduler.instance)
+            .bind { [weak self] _ in
+            self?.view.endEditing(true)
+        }.disposed(by: disposeBag)
+        
+    }
+    
+    //    MARK: - Navigation
+//    func navigateToLogInScreen(){
+//        logInButton.rx.tap
+//            .subscribe { [weak self] _ in
+//                self?.navigationController?.pushViewController(LogInViewController(), animated: true)
+//            }
+//    }
+    
+//    MARK: - private functions
+    
+    private func handleTextFieldsBehavior(for textField:UITextField){
         textField.borderStyle = .none
         textField.layer.borderWidth=1
         textField.layer.borderColor = UIColor(hex: k.orangeColor).cgColor
     }
     
-    private func resetTextFieldAppearance(for textField:UITextField){
+    private func resetTextFieldsBehavior(for textField:UITextField){
         textField.borderStyle = .roundedRect
         textField.layer.borderWidth=0
         textField.layer.borderColor = nil
-    }
-    
-    //    MARK: - Navigation
-
-    
-//    MARK: - private functions
-    
-    private func bindToTapGesture(){
-        tapGesture.rx.event.bind { [weak self] _ in
-            self?.view.endEditing(true)
-        }.disposed(by: disposeBag)
         
     }
 
