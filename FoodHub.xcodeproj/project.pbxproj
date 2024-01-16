@@ -17,6 +17,8 @@
 		001607542B534BFE00C1BFDD /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001607532B534BFE00C1BFDD /* SignUpViewController.swift */; };
 		001607562B5490FF00C1BFDD /* TextFieldValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001607552B5490FF00C1BFDD /* TextFieldValidation.swift */; };
 		001607582B54912700C1BFDD /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001607572B54912700C1BFDD /* SignUpViewModel.swift */; };
+		0016075B2B55D59B00C1BFDD /* ApiCaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0016075A2B55D59B00C1BFDD /* ApiCaller.swift */; };
+		0016075D2B56C25600C1BFDD /* RegisterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0016075C2B56C25600C1BFDD /* RegisterModel.swift */; };
 		004526322B4DD9720035F0C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004526312B4DD9720035F0C0 /* AppDelegate.swift */; };
 		004526342B4DD9720035F0C0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004526332B4DD9720035F0C0 /* SceneDelegate.swift */; };
 		004526362B4DD9720035F0C0 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004526352B4DD9720035F0C0 /* WelcomeViewController.swift */; };
@@ -37,6 +39,8 @@
 		001607532B534BFE00C1BFDD /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		001607552B5490FF00C1BFDD /* TextFieldValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldValidation.swift; sourceTree = "<group>"; };
 		001607572B54912700C1BFDD /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		0016075A2B55D59B00C1BFDD /* ApiCaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiCaller.swift; sourceTree = "<group>"; };
+		0016075C2B56C25600C1BFDD /* RegisterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterModel.swift; sourceTree = "<group>"; };
 		0045262E2B4DD9720035F0C0 /* FoodHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		004526312B4DD9720035F0C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		004526332B4DD9720035F0C0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -117,8 +121,17 @@
 			children = (
 				001607532B534BFE00C1BFDD /* SignUpViewController.swift */,
 				001607572B54912700C1BFDD /* SignUpViewModel.swift */,
+				0016075C2B56C25600C1BFDD /* RegisterModel.swift */,
 			);
 			name = SignUpScreen;
+			sourceTree = "<group>";
+		};
+		001607592B55D56D00C1BFDD /* ApiServices */ = {
+			isa = PBXGroup;
+			children = (
+				0016075A2B55D59B00C1BFDD /* ApiCaller.swift */,
+			);
+			path = ApiServices;
 			sourceTree = "<group>";
 		};
 		004526252B4DD9720035F0C0 = {
@@ -147,6 +160,7 @@
 				004526422B4DD9730035F0C0 /* Info.plist */,
 				0016073A2B4EDADE00C1BFDD /* App */,
 				001607392B4EDA4400C1BFDD /* Etensions */,
+				001607592B55D56D00C1BFDD /* ApiServices */,
 				0016074B2B52FE9D00C1BFDD /* Helpers */,
 				001607382B4ED9F600C1BFDD /* Resources */,
 			);
@@ -288,6 +302,8 @@
 				0016074A2B52EFD700C1BFDD /* UIImageView+Extensions.swift in Sources */,
 				001607432B51B47200C1BFDD /* UITextField+Extensions.swift in Sources */,
 				0016073D2B4F25E700C1BFDD /* UIColor+Extensions.swift in Sources */,
+				0016075D2B56C25600C1BFDD /* RegisterModel.swift in Sources */,
+				0016075B2B55D59B00C1BFDD /* ApiCaller.swift in Sources */,
 				001607562B5490FF00C1BFDD /* TextFieldValidation.swift in Sources */,
 				004526322B4DD9720035F0C0 /* AppDelegate.swift in Sources */,
 				001607582B54912700C1BFDD /* SignUpViewModel.swift in Sources */,

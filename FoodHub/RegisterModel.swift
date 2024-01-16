@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+struct RegisterModel:Codable{
+    let status:String
+    let message:String
+}
