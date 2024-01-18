@@ -15,8 +15,8 @@ class SignUpViewController: UIViewController {
     private let disposeBag = DisposeBag()
     private let tapGesture = UITapGestureRecognizer()
     
-    private var emailIsValidSubject = BehaviorRelay<Bool>(value: false)
-    private var passwordIsValidSubject = BehaviorRelay<Bool>(value: false)
+    private var isemailIsValidSubject = BehaviorRelay<Bool>(value: false)
+    private var ispasswordIsValidSubject = BehaviorRelay<Bool>(value: false)
 
     
     
@@ -38,6 +38,10 @@ class SignUpViewController: UIViewController {
         passwordValidation()
         
         handleMainButtonBehavior()
+        
+        
+        bindToMainButton()
+        alertNetworkRespond()
 
     }
     
@@ -441,12 +445,28 @@ class SignUpViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
+    private func bindToMainButton(){
+        mainButton.rx.tap.bind(to: viewModel.mainButtonSubject).disposed(by: disposeBag)
+    }
+    
+    private func alertNetworkRespond(){
+        
+        viewModel.requestError.observe(on: MainScheduler.instance).subscribe(onNext: {[weak self] error in
+            guard let self = self else {return}
+            self.present(self.requestAlert(title: "Error", message: error.localizedDescription), animated: true)
+        }).disposed(by: disposeBag)
+        
+        viewModel.result.observe(on: MainScheduler.instance).subscribe {[weak self] result in
+            guard let self = self else {return}
+            self.present(self.requestAlert(title: result.element!.status, message: result.element!.message), animated: true)
+        }.disposed(by: disposeBag)
+    }
     
     private func emailValidation() {
         viewModel.isvalidEmail()
             .observe(on: MainScheduler.instance)
             .subscribe {[weak self] isValid in
-                self?.emailIsValidSubject.accept(isValid)
+                self?.isemailIsValidSubject.accept(isValid)
                 if !isValid {
                     self?.present(Validation.popAlert(alertType: .invalidEmail), animated: true)
                 }
@@ -458,7 +478,7 @@ class SignUpViewController: UIViewController {
         viewModel.isValidPassword()
             .observe(on: MainScheduler.instance)
             .subscribe {[weak self] isValid in
-                self?.passwordIsValidSubject.accept(isValid)
+                self?.ispasswordIsValidSubject.accept(isValid)
                 if !isValid {
                     self?.present(Validation.popAlert(alertType: .invalidPassword), animated: true)
                 }
@@ -476,7 +496,7 @@ class SignUpViewController: UIViewController {
     
     private func handleMainButtonBehavior(){
         Observable
-            .combineLatest(emailIsValidSubject, passwordIsValidSubject)
+            .combineLatest(isemailIsValidSubject, ispasswordIsValidSubject)
             .subscribe(onNext: { [weak self] (isEmailValid, isPasswordValid) in
                 let isButtonEnabled = isEmailValid && isPasswordValid
                 self?.mainButton.isEnabled = isButtonEnabled
@@ -504,6 +524,12 @@ class SignUpViewController: UIViewController {
         textField.layer.borderWidth=0
         textField.layer.borderColor = nil
         
+    }
+
+    private func requestAlert(title:String , message:String)-> UIAlertController{
+        let alert = UIAlertController(title:title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default))
+        return alert
     }
 
 

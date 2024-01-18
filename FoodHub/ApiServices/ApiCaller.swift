@@ -9,14 +9,6 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-
-
-
-
-
-import Foundation
-import RxSwift
-
 class ApiCaller {
     
     static let shared = ApiCaller()
