@@ -22,7 +22,7 @@ class ApiCaller {
     
     
 //    MARK: - User Login
-    func logInUser(username: String, email: String, password: String) -> Observable<LogInModel> {
+    func logInUser(email: String, password: String) -> Observable<LogInModel> {
         let body: [String: Any] = [
             "email": email,
             "password": password,
