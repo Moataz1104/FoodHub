@@ -33,7 +33,7 @@ class SignUpViewModel {
 
     
     
-    func combineLatestInputs() -> Observable<(String, String, String)> {
+    private func combineLatestInputs() -> Observable<(String, String, String)> {
         return Observable.combineLatest(userNameInputSubject, emailInputSubject, passwordInputSubject)
     }
 

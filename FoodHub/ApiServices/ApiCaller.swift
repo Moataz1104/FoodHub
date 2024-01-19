@@ -20,6 +20,22 @@ class ApiCaller {
     
     
     
+    
+//    MARK: - User Login
+    func logInUser(username: String, email: String, password: String) -> Observable<LogInModel> {
+        let body: [String: Any] = [
+            "email": email,
+            "password": password,
+            "roles": ["User"]
+        ]
+        return buildRequest(method: "POST", pathComponent: "/login", body: body)
+            .subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background))
+            .map { data in
+                try! JSONDecoder().decode(LogInModel.self, from: data)
+            }.observe(on: ConcurrentDispatchQueueScheduler(qos: .background))
+    }
+    
+//    MARK: - User Registeration
     func registerUser(username: String, email: String, password: String) -> Observable<RegisterModel> {
         let body: [String: Any] = [
             "username": username,
@@ -35,6 +51,8 @@ class ApiCaller {
             }.observe(on: ConcurrentDispatchQueueScheduler(qos: .background))
     }
     
+    
+//    MARK: - Bulding request
     private func buildRequest(method: String, pathComponent: String, body: [String: Any]?) -> Observable<Data> {
         let url = baseUrl.appendingPathComponent(pathComponent)
         var request = URLRequest(url: url)
