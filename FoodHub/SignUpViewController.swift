@@ -42,6 +42,9 @@ class SignUpViewController: UIViewController {
         
         bindToMainButton()
         alertNetworkRespond()
+        
+//        Navigation
+        navigateToLogInScreen()
 
     }
     
@@ -504,12 +507,12 @@ class SignUpViewController: UIViewController {
     }
     
     //    MARK: - Navigation
-//    func navigateToLogInScreen(){
-//        logInButton.rx.tap
-//            .subscribe { [weak self] _ in
-//                self?.navigationController?.pushViewController(LogInViewController(), animated: true)
-//            }
-//    }
+    func navigateToLogInScreen(){
+        logInButton.rx.tap
+            .subscribe { [weak self] _ in
+                self?.navigationController?.pushViewController(LogInViewController(), animated: true)
+            }.disposed(by: disposeBag)
+    }
     
 //    MARK: - private functions
     

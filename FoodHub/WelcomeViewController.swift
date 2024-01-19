@@ -299,11 +299,10 @@ class WelcomeViewController: UIViewController {
                 self?.navigationController?.pushViewController(SignUpViewController(), animated: true)
             }.disposed(by: disposeBag)
     }
-//    TODO: - Handle navigation(Just uncomment)
     func tapSignIn(){
         signInButton.rx.tap
-            .subscribe { /*[weak self]*/ _ in
-//                self?.navigationController?.pushViewController(LogInViewController(), animated: true)
+            .subscribe { [weak self] _ in
+                self?.navigationController?.pushViewController(LogInViewController(), animated: true)
             }.disposed(by: disposeBag)
     }
     
