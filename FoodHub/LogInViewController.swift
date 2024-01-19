@@ -6,11 +6,14 @@
 //
 
 import UIKit
-
+import RxSwift
+import RxCocoa
 class LogInViewController: UIViewController {
     
     
-    
+    private let disposeBag = DisposeBag()
+    private let tapGesture = UITapGestureRecognizer()
+
     //    MARK: - View Controller life cycle
     
     override func viewDidLoad() {
@@ -19,6 +22,7 @@ class LogInViewController: UIViewController {
         navigationController?.navigationBar.isHidden = true
         
         setViewsHierarchy()
+        bindToTapGesture()
     }
     
     override func viewDidLayoutSubviews() {
@@ -338,7 +342,18 @@ class LogInViewController: UIViewController {
         logInView.addSubview(faceButton)
         logInView.addSubview(googleButton)
         
+        view.addGestureRecognizer(tapGesture)
+    }
+    
+    
+    //    MARK: - Binding and Behavior
+    private func bindToTapGesture(){
+        tapGesture.rx.event.observe(on: MainScheduler.instance)
+            .bind { [weak self] _ in
+            self?.view.endEditing(true)
+        }.disposed(by: disposeBag)
         
     }
+
     
 }
