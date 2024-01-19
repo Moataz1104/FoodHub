@@ -378,7 +378,7 @@ class SignUpViewController: UIViewController {
     
 
     
-//    MARK: - Text Fields Binding and Behavior
+//    MARK: - Binding and Behavior
     
     private func bindToUserNameTextField() {
         userNameTextField.rx.controlEvent(.editingDidBegin)
@@ -448,23 +448,32 @@ class SignUpViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
+    private func bindToTapGesture(){
+        tapGesture.rx.event.observe(on: MainScheduler.instance)
+            .bind { [weak self] _ in
+            self?.view.endEditing(true)
+        }.disposed(by: disposeBag)
+        
+    }
+
+//    Main Button
     private func bindToMainButton(){
         mainButton.rx.tap.bind(to: viewModel.mainButtonSubject).disposed(by: disposeBag)
     }
     
-    private func alertNetworkRespond(){
-        
-        viewModel.requestError.observe(on: MainScheduler.instance).subscribe(onNext: {[weak self] error in
-            guard let self = self else {return}
-            self.present(self.requestAlert(title: "Error", message: error.localizedDescription), animated: true)
-        }).disposed(by: disposeBag)
-        
-        viewModel.result.observe(on: MainScheduler.instance).subscribe {[weak self] result in
-            guard let self = self else {return}
-            self.present(self.requestAlert(title: result.element!.status, message: result.element!.message), animated: true)
-        }.disposed(by: disposeBag)
+    private func handleMainButtonBehavior(){
+        Observable
+            .combineLatest(isemailIsValidSubject, ispasswordIsValidSubject)
+            .subscribe(onNext: { [weak self] (isEmailValid, isPasswordValid) in
+                let isButtonEnabled = isEmailValid && isPasswordValid
+                self?.mainButton.isEnabled = isButtonEnabled
+            }).disposed(by: disposeBag)
     }
+
     
+    
+    
+//    MARK: - Validation
     private func emailValidation() {
         viewModel.isvalidEmail()
             .observe(on: MainScheduler.instance)
@@ -489,22 +498,7 @@ class SignUpViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
-    private func bindToTapGesture(){
-        tapGesture.rx.event.observe(on: MainScheduler.instance)
-            .bind { [weak self] _ in
-            self?.view.endEditing(true)
-        }.disposed(by: disposeBag)
-        
-    }
     
-    private func handleMainButtonBehavior(){
-        Observable
-            .combineLatest(isemailIsValidSubject, ispasswordIsValidSubject)
-            .subscribe(onNext: { [weak self] (isEmailValid, isPasswordValid) in
-                let isButtonEnabled = isEmailValid && isPasswordValid
-                self?.mainButton.isEnabled = isButtonEnabled
-            }).disposed(by: disposeBag)
-    }
     
     //    MARK: - Navigation
     func navigateToLogInScreen(){
@@ -515,6 +509,21 @@ class SignUpViewController: UIViewController {
     }
     
 //    MARK: - private functions
+    
+    private func alertNetworkRespond(){
+        
+        viewModel.requestError.observe(on: MainScheduler.instance).subscribe(onNext: {[weak self] error in
+            guard let self = self else {return}
+            self.present(self.requestAlert(title: "Error", message: error.localizedDescription), animated: true)
+        }).disposed(by: disposeBag)
+        
+        viewModel.result.observe(on: MainScheduler.instance).subscribe {[weak self] result in
+            guard let self = self else {return}
+            self.present(self.requestAlert(title: result.element!.status, message: result.element!.message), animated: true)
+        }.disposed(by: disposeBag)
+    }
+
+    
     
     private func handleTextFieldsBehavior(for textField:UITextField){
         textField.borderStyle = .none
