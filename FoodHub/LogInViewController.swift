@@ -12,8 +12,13 @@ class LogInViewController: UIViewController {
     
     
     private let disposeBag = DisposeBag()
+    private let viewModel = LogInViewModel()
     private let tapGesture = UITapGestureRecognizer()
-
+    
+    private var isemailIsValidSubject = BehaviorRelay<Bool>(value: false)
+    private var ispasswordIsValidSubject = BehaviorRelay<Bool>(value: false)
+    
+    
     //    MARK: - View Controller life cycle
     
     override func viewDidLoad() {
@@ -23,6 +28,18 @@ class LogInViewController: UIViewController {
         
         setViewsHierarchy()
         bindToTapGesture()
+        
+        // Bind Text Fields
+        bindToEmailTextField()
+        bindToPasswordTextField()
+        //Input Validation
+        emailValidation()
+        passwordValidation()
+        
+        //Main Button
+        handleMainButtonBehavior()
+        bindToMainButton()
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -350,10 +367,108 @@ class LogInViewController: UIViewController {
     private func bindToTapGesture(){
         tapGesture.rx.event.observe(on: MainScheduler.instance)
             .bind { [weak self] _ in
-            self?.view.endEditing(true)
-        }.disposed(by: disposeBag)
+                self?.view.endEditing(true)
+            }.disposed(by: disposeBag)
         
     }
-
     
+    private func bindToEmailTextField() {
+        emailTextField.rx.controlEvent(.editingDidBegin)
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext:  {[weak self] _ in
+                guard let self = self else { return}
+                self.handleTextFieldsBehavior(for: self.emailTextField)
+            }).disposed(by: disposeBag)
+        
+        
+        emailTextField.rx.controlEvent(.editingDidEnd)
+            .do(onNext: {[weak self] _ in
+                guard let self = self else { return}
+                DispatchQueue.main.async {
+                    self.resetTextFieldsBehavior(for: self.emailTextField)
+                }
+            })
+            .map { [weak self] in self?.emailTextField.text ?? "" }
+            .filter { !$0.isEmpty }
+            .bind(to: viewModel.emailInputSubject)
+            .disposed(by: disposeBag)
+    }
+    
+    private func bindToPasswordTextField(){
+        passwordTextField.rx.controlEvent(.editingDidBegin)
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext:  {[weak self] _ in
+                guard let self = self else { return}
+                self.handleTextFieldsBehavior(for: self.passwordTextField)
+            }).disposed(by: disposeBag)
+        
+        
+        
+        passwordTextField.rx.controlEvent(.editingDidEnd)
+            .do(onNext: {[weak self] _ in
+                guard let self = self else { return}
+                DispatchQueue.main.async {
+                    self.resetTextFieldsBehavior(for: self.passwordTextField)
+                }
+            })
+            .map{[weak self] in self?.passwordTextField.text ?? ""}
+            .filter{!$0.isEmpty}
+            .bind(to: viewModel.passwordInputSubject)
+            .disposed(by: disposeBag)
+    }
+    
+    //    Main Button
+    private func bindToMainButton(){
+        mainButton.rx.tap.bind(to: viewModel.mainButtonSubject).disposed(by: disposeBag)
+    }
+    
+    private func handleMainButtonBehavior(){
+        Observable
+            .combineLatest(isemailIsValidSubject, ispasswordIsValidSubject)
+            .subscribe(onNext: { [weak self] (isEmailValid, isPasswordValid) in
+                let isButtonEnabled = isEmailValid && isPasswordValid
+                self?.mainButton.isEnabled = isButtonEnabled
+            }).disposed(by: disposeBag)
+    }
+    
+    //    MARK: - Validation
+    private func emailValidation() {
+        viewModel.isvalidEmail()
+            .observe(on: MainScheduler.instance)
+            .subscribe {[weak self] isValid in
+                self?.isemailIsValidSubject.accept(isValid)
+                if !isValid {
+                    self?.present(Validation.popAlert(alertType: .invalidEmail), animated: true)
+                }
+            }
+            .disposed(by: disposeBag)
+    }
+    
+    private func passwordValidation() {
+        viewModel.isValidPassword()
+            .observe(on: MainScheduler.instance)
+            .subscribe {[weak self] isValid in
+                self?.ispasswordIsValidSubject.accept(isValid)
+                if !isValid {
+                    self?.present(Validation.popAlert(alertType: .invalidPassword), animated: true)
+                }
+            }
+            .disposed(by: disposeBag)
+    }
+    
+
+    //    MARK: - private functions
+    
+    private func handleTextFieldsBehavior(for textField:UITextField){
+        textField.borderStyle = .none
+        textField.layer.borderWidth=1
+        textField.layer.borderColor = UIColor(hex: k.orangeColor).cgColor
+    }
+    
+    private func resetTextFieldsBehavior(for textField:UITextField){
+        textField.borderStyle = .roundedRect
+        textField.layer.borderWidth=0
+        textField.layer.borderColor = nil
+        
+    }
 }

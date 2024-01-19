@@ -26,6 +26,7 @@
 		0045263E2B4DD9730035F0C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0045263D2B4DD9730035F0C0 /* Assets.xcassets */; };
 		004526412B4DD9730035F0C0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0045263F2B4DD9730035F0C0 /* LaunchScreen.storyboard */; };
 		007028602B5AF29700A51C26 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0070285F2B5AF29700A51C26 /* LogInViewController.swift */; };
+		007028622B5B1D8C00A51C26 /* LogInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007028612B5B1D8C00A51C26 /* LogInViewModel.swift */; };
 		54C669021B847914CCDCCA6D /* Pods_FoodHub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79609E936E2A2E6D342C65E9 /* Pods_FoodHub.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +52,7 @@
 		004526402B4DD9730035F0C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		004526422B4DD9730035F0C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0070285F2B5AF29700A51C26 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		007028612B5B1D8C00A51C26 /* LogInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewModel.swift; sourceTree = "<group>"; };
 		79609E936E2A2E6D342C65E9 /* Pods_FoodHub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodHub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		94BA133F3CE54ACE0DF8F8BC /* Pods-FoodHub.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodHub.debug.xcconfig"; path = "Target Support Files/Pods-FoodHub/Pods-FoodHub.debug.xcconfig"; sourceTree = "<group>"; };
 		D82C7F91D696F99BAC8FE139 /* Pods-FoodHub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodHub.release.xcconfig"; path = "Target Support Files/Pods-FoodHub/Pods-FoodHub.release.xcconfig"; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				0070285F2B5AF29700A51C26 /* LogInViewController.swift */,
+				007028612B5B1D8C00A51C26 /* LogInViewModel.swift */,
 			);
 			name = LogInScreen;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 				0016074A2B52EFD700C1BFDD /* UIImageView+Extensions.swift in Sources */,
 				001607432B51B47200C1BFDD /* UITextField+Extensions.swift in Sources */,
 				0016073D2B4F25E700C1BFDD /* UIColor+Extensions.swift in Sources */,
+				007028622B5B1D8C00A51C26 /* LogInViewModel.swift in Sources */,
 				007028602B5AF29700A51C26 /* LogInViewController.swift in Sources */,
 				0016075D2B56C25600C1BFDD /* RegisterModel.swift in Sources */,
 				0016075B2B55D59B00C1BFDD /* ApiCaller.swift in Sources */,
