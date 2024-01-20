@@ -44,7 +44,7 @@ class LogInViewController: UIViewController {
         alertNetworkRespond()
         
 //        Navigation
-        signUpButtonPressed()
+        navigateToSignUpScreen()
         forgotPwButtonPressed()
 
         subscribeToIndecator()
@@ -496,18 +496,18 @@ class LogInViewController: UIViewController {
 
     
 //    MARK: - Navigation
-    private func signUpButtonPressed(){
-        signUpButton.rx.tap
+    private func navigateToSignUpScreen(){
+        Observable.merge(backButton.rx.tap.asObservable() , signUpButton.rx.tap.asObservable())
             .subscribe { [weak self] _ in
-                self?.navigationController?.pushViewController(SignUpViewController(), animated: true)
+                self?.navigationController?.popViewController(animated: true)
             }.disposed(by: disposeBag)
     }
     
     private func forgotPwButtonPressed(){
-//        forgotPwButton.rx.tap
-//            .subscribe { [weak self] _ in
-//                self?.navigationController?.pushViewController(ForgotPasswordViewController(), animated: true)
-//            }.disposed(by: disposeBag)
+        forgotPwButton.rx.tap
+            .subscribe { [weak self] _ in
+                self?.navigationController?.pushViewController(VerificationViewController(), animated: true)
+            }.disposed(by: disposeBag)
     }
         
 //    MARK: - private functions

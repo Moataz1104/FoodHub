@@ -8,5 +8,5 @@ target 'FoodHub' do
   # Pods for FoodHub
 pod 'RxSwift'
 pod 'RxCocoa'
-
+pod 'OTPFieldView'
 end
