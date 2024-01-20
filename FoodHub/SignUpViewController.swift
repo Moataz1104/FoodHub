@@ -520,11 +520,19 @@ class SignUpViewController: UIViewController {
         viewModel.result.observe(on: MainScheduler.instance).subscribe {[weak self] result in
             guard let self = self else {return}
             self.present(self.requestAlert(title: result.element!.status, message: result.element!.message), animated: true)
+            print("***************")
+            print(result.element!)
+            print("***************")
+
         }.disposed(by: disposeBag)
     }
+    
+    private func requestAlert(title:String , message:String)-> UIAlertController{
+        let alert = UIAlertController(title:title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default))
+        return alert
+    }
 
-    
-    
     private func handleTextFieldsBehavior(for textField:UITextField){
         textField.borderStyle = .none
         textField.layer.borderWidth=1
@@ -538,11 +546,6 @@ class SignUpViewController: UIViewController {
         
     }
 
-    private func requestAlert(title:String , message:String)-> UIAlertController{
-        let alert = UIAlertController(title:title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default))
-        return alert
-    }
 
 
 }

@@ -39,7 +39,14 @@ class LogInViewController: UIViewController {
         //Main Button
         handleMainButtonBehavior()
         bindToMainButton()
+
+//        Alert
+        alertNetworkRespond()
         
+//        Navigation
+        signUpButtonPressed()
+        forgotPwButtonPressed()
+
     }
     
     override func viewDidLayoutSubviews() {
@@ -152,7 +159,7 @@ class LogInViewController: UIViewController {
         return label
     }()
     
-    private let logInButton: UIButton = {
+    private let signUpButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Sign Up", for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
@@ -293,8 +300,8 @@ class LogInViewController: UIViewController {
         NSLayoutConstraint.activate(subLabelCons)
         
         let logInButtonCons=[
-            logInButton.topAnchor.constraint(lessThanOrEqualTo: logInView.topAnchor, constant: 84),
-            logInButton.leadingAnchor.constraint(equalTo: subLabel.trailingAnchor, constant: 3)
+            signUpButton.topAnchor.constraint(lessThanOrEqualTo: logInView.topAnchor, constant: 84),
+            signUpButton.leadingAnchor.constraint(equalTo: subLabel.trailingAnchor, constant: 3)
         ]
         NSLayoutConstraint.activate(logInButtonCons)
         
@@ -354,7 +361,7 @@ class LogInViewController: UIViewController {
         view.addSubview(logInView)
         logInView.addSubview(mainButton)
         logInView.addSubview(subLabel)
-        logInView.addSubview(logInButton)
+        logInView.addSubview(signUpButton)
         logInView.addSubview(label)
         logInView.addSubview(faceButton)
         logInView.addSubview(googleButton)
@@ -457,7 +464,43 @@ class LogInViewController: UIViewController {
     }
     
 
-    //    MARK: - private functions
+    
+//    MARK: - Navigation
+    private func signUpButtonPressed(){
+        signUpButton.rx.tap
+            .subscribe { [weak self] _ in
+                self?.navigationController?.pushViewController(SignUpViewController(), animated: true)
+            }.disposed(by: disposeBag)
+    }
+    
+    private func forgotPwButtonPressed(){
+//        forgotPwButton.rx.tap
+//            .subscribe { [weak self] _ in
+//                self?.navigationController?.pushViewController(ForgotPasswordViewController(), animated: true)
+//            }.disposed(by: disposeBag)
+    }
+        
+//    MARK: - private functions
+    
+    
+    private func alertNetworkRespond(){
+        
+        viewModel.requestError.observe(on: MainScheduler.instance).subscribe(onNext: {[weak self] error in
+            guard let self = self else {return}
+            self.present(self.requestAlert(title: "Error", message: error.localizedDescription), animated: true)
+        }).disposed(by: disposeBag)
+        
+        viewModel.result.observe(on: MainScheduler.instance).subscribe {[weak self] result in
+            guard let self = self else {return}
+            self.present(self.requestAlert(title: result.element!.status, message: result.element!.message), animated: true)
+        }.disposed(by: disposeBag)
+    }
+    
+    private func requestAlert(title:String , message:String)-> UIAlertController{
+        let alert = UIAlertController(title:title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default))
+        return alert
+    }
     
     private func handleTextFieldsBehavior(for textField:UITextField){
         textField.borderStyle = .none

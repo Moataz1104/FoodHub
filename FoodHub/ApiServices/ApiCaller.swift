@@ -5,6 +5,7 @@
 //  Created by Moataz Mohamed on 15/01/2024.
 //
 
+//Moataz@222
 import Foundation
 import RxSwift
 import RxCocoa
@@ -15,7 +16,7 @@ class ApiCaller {
     
     private init() {}
     
-    private let baseUrl = URL(string: "https://5856-197-134-125-52.ngrok-free.app/api/Authentication")!
+    private let baseUrl = URL(string: "https://0766-102-190-250-116.ngrok-free.app/api/Authentication")!
     
     
     
@@ -26,7 +27,6 @@ class ApiCaller {
         let body: [String: Any] = [
             "email": email,
             "password": password,
-            "roles": ["User"]
         ]
         return buildRequest(method: "POST", pathComponent: "/login", body: body)
             .subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background))
