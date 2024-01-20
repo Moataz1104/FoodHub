@@ -46,6 +46,8 @@ class SignUpViewController: UIViewController {
 //        Navigation
         navigateToLogInScreen()
 
+//        Indecator
+        subscribeToIndecator()
     }
     
     override func viewDidLayoutSubviews() {
@@ -184,6 +186,14 @@ class SignUpViewController: UIViewController {
     }()
     
 
+    //    Activity Indecator
+    
+    private let indecator:UIActivityIndicatorView={
+        let indecator = UIActivityIndicatorView()
+        indecator.style = .large
+        return indecator
+    }()
+    
     
     //    MARK: - Set Up Constraints
     
@@ -333,7 +343,10 @@ class SignUpViewController: UIViewController {
         NSLayoutConstraint.activate(googleButtonCons)
 
 
-        
+    // Activity Indecator
+            
+        indecator.center = view.center
+
     }
 
     
@@ -374,6 +387,10 @@ class SignUpViewController: UIViewController {
         
 //        Tap gesture to recognize user taps
         view.addGestureRecognizer(tapGesture)
+        
+        //Indecator
+        view.addSubview(indecator)
+        view.bringSubviewToFront(indecator)
     }
     
 
@@ -470,8 +487,16 @@ class SignUpViewController: UIViewController {
             }).disposed(by: disposeBag)
     }
 
-    
-    
+//    Indecator
+    private func subscribeToIndecator(){
+        viewModel.isAnimatingRelay.observe(on: MainScheduler.instance).subscribe {[weak self] isAnimate in
+            if isAnimate{
+                self?.indecator.startAnimating()
+            }else{
+                self?.indecator.stopAnimating()
+            }
+        }.disposed(by: disposeBag)
+    }
     
 //    MARK: - Validation
     private func emailValidation() {

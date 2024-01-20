@@ -16,9 +16,9 @@ class LogInViewModel{
     let emailInputSubject = PublishRelay<String>()
     let passwordInputSubject = PublishRelay<String>()
     let mainButtonSubject = PublishRelay<Void>()
-    var result = PublishRelay<LogInModel>()
-    var requestError=PublishRelay<Error>()
-    
+    let result = PublishRelay<LogInModel>()
+    let requestError=PublishRelay<Error>()
+    let isAnimatingRelay = PublishRelay<Bool>()
     
     func isvalidEmail() -> Observable<Bool> {
         return emailInputSubject
@@ -40,18 +40,21 @@ class LogInViewModel{
     private func sendRequest(){
         mainButtonSubject
             .withLatestFrom(combineLatestInputs())
-            .flatMapLatest { (email, password) in
+            .flatMapLatest {[weak self] (email, password) in
+                self?.isAnimatingRelay.accept(true)
                 print("Main button tapped with latest values:", email, password)
                 return ApiCaller.shared.logInUser(email: email, password: password)
                     .asObservable()
                     .catch {[weak self] error in
                         print("Network error: \(error)")
                         self?.requestError.accept(error)
+                        self?.isAnimatingRelay.accept(false)
                         return Observable.empty()
                     }
             }
             .subscribe(onNext: {[weak self] result in
                 print("Network request successful:", result)
+                self?.isAnimatingRelay.accept(true)
                 self?.result.accept(result)
             })
             .disposed(by: disposeBag)

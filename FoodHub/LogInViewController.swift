@@ -47,6 +47,7 @@ class LogInViewController: UIViewController {
         signUpButtonPressed()
         forgotPwButtonPressed()
 
+        subscribeToIndecator()
     }
     
     override func viewDidLayoutSubviews() {
@@ -98,11 +99,13 @@ class LogInViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints=false
         return view
     }()
+    
     private let emailLabel:UILabel={
         let label=UILabel()
         label.configure(with: .subTitle(font: 16), text: "E-mail")
         return label
     }()
+    
     private let emailTextField:UITextField={
         let field = UITextField()
         field.configure(with: .email)
@@ -117,11 +120,13 @@ class LogInViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints=false
         return view
     }()
+    
     private let passwordLabel:UILabel={
         let label=UILabel()
         label.configure(with: .subTitle(font: 16), text: "Password")
         return label
     }()
+    
     private let passwordTextField:UITextField={
         let field = UITextField()
         field.configure(with: .password(enableVisibilityToggle: true))
@@ -180,10 +185,19 @@ class LogInViewController: UIViewController {
         return button
         
     }()
+    
     private let googleButton:UIButton={
         let button = UIButton().setButton(for: .google)
         return button
         
+    }()
+    
+//    Activity Indecator
+    
+    private let indecator:UIActivityIndicatorView={
+        let indecator = UIActivityIndicatorView()
+        indecator.style = .large
+        return indecator
     }()
     
     
@@ -329,7 +343,8 @@ class LogInViewController: UIViewController {
         googleButton.layer.cornerRadius = googleButton.frame.height/2
         NSLayoutConstraint.activate(googleButtonCons)
         
-        
+//        Indecator
+        indecator.center = view.center
         
         
     }
@@ -367,6 +382,10 @@ class LogInViewController: UIViewController {
         logInView.addSubview(googleButton)
         
         view.addGestureRecognizer(tapGesture)
+        
+//        Indecator
+        view.addSubview(indecator)
+        view.bringSubviewToFront(indecator)
     }
     
     
@@ -436,6 +455,17 @@ class LogInViewController: UIViewController {
                 let isButtonEnabled = isEmailValid && isPasswordValid
                 self?.mainButton.isEnabled = isButtonEnabled
             }).disposed(by: disposeBag)
+    }
+    
+//    Indecator
+    private func subscribeToIndecator(){
+        viewModel.isAnimatingRelay.observe(on: MainScheduler.instance).subscribe {[weak self] isAnimate in
+            if isAnimate{
+                self?.indecator.startAnimating()
+            }else{
+                self?.indecator.stopAnimating()
+            }
+        }.disposed(by: disposeBag)
     }
     
     //    MARK: - Validation
