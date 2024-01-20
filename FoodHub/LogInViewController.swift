@@ -301,7 +301,7 @@ class LogInViewController: UIViewController {
         
         let mainButtonCons=[
             mainButton.centerXAnchor.constraint(equalTo: logInView.centerXAnchor),
-            mainButton.widthAnchor.constraint(equalToConstant: 248),
+            mainButton.widthAnchor.constraint(equalToConstant: 260),
             mainButton.heightAnchor.constraint(equalToConstant: 60),
             mainButton.topAnchor.constraint(equalTo: logInView.topAnchor, constant: 0)
         ]
@@ -506,7 +506,7 @@ class LogInViewController: UIViewController {
     private func forgotPwButtonPressed(){
         forgotPwButton.rx.tap
             .subscribe { [weak self] _ in
-                self?.navigationController?.pushViewController(VerificationViewController(), animated: true)
+                self?.navigationController?.pushViewController(RessetPasswordViewController(), animated: true)
             }.disposed(by: disposeBag)
     }
         

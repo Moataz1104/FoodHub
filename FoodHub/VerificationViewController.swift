@@ -24,12 +24,13 @@ class VerificationViewController:UIViewController{
         navigationController?.navigationBar.isHidden=true
         otpView.delegate = self
         setViewsHierarchy()
+        subscribeToResultSubject()
+
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         setUpConstraints()
-        subscribeToResultSubject()
     }
     
     //    MARK: - Views

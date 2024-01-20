@@ -25,6 +25,7 @@
 		0045263C2B4DD9720035F0C0 /* FoodHub.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0045263A2B4DD9720035F0C0 /* FoodHub.xcdatamodeld */; };
 		0045263E2B4DD9730035F0C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0045263D2B4DD9730035F0C0 /* Assets.xcassets */; };
 		004526412B4DD9730035F0C0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0045263F2B4DD9730035F0C0 /* LaunchScreen.storyboard */; };
+		0052ADA12B5C8B4400A1DB59 /* RessetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0052ADA02B5C8B4400A1DB59 /* RessetPasswordViewController.swift */; };
 		007028602B5AF29700A51C26 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0070285F2B5AF29700A51C26 /* LogInViewController.swift */; };
 		007028622B5B1D8C00A51C26 /* LogInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007028612B5B1D8C00A51C26 /* LogInViewModel.swift */; };
 		007028642B5B21A200A51C26 /* LogInModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007028632B5B21A200A51C26 /* LogInModel.swift */; };
@@ -55,6 +56,7 @@
 		0045263D2B4DD9730035F0C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		004526402B4DD9730035F0C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		004526422B4DD9730035F0C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0052ADA02B5C8B4400A1DB59 /* RessetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RessetPasswordViewController.swift; sourceTree = "<group>"; };
 		0070285F2B5AF29700A51C26 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		007028612B5B1D8C00A51C26 /* LogInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewModel.swift; sourceTree = "<group>"; };
 		007028632B5B21A200A51C26 /* LogInModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInModel.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 				001607522B534BB300C1BFDD /* SignUpScreen */,
 				0070285E2B5AF26E00A51C26 /* LogInScreen */,
 				007028652B5C40A900A51C26 /* VerificationScreen */,
+				0052AD9F2B5C8B1400A1DB59 /* RessetPasswordScreen */,
 			);
 			name = App;
 			sourceTree = "<group>";
@@ -179,6 +182,14 @@
 				001607382B4ED9F600C1BFDD /* Resources */,
 			);
 			path = FoodHub;
+			sourceTree = "<group>";
+		};
+		0052AD9F2B5C8B1400A1DB59 /* RessetPasswordScreen */ = {
+			isa = PBXGroup;
+			children = (
+				0052ADA02B5C8B4400A1DB59 /* RessetPasswordViewController.swift */,
+			);
+			name = RessetPasswordScreen;
 			sourceTree = "<group>";
 		};
 		0070285E2B5AF26E00A51C26 /* LogInScreen */ = {
@@ -334,6 +345,7 @@
 			files = (
 				00B3E6B82B5C65A9005EEE92 /* VerificationModel.swift in Sources */,
 				004526362B4DD9720035F0C0 /* WelcomeViewController.swift in Sources */,
+				0052ADA12B5C8B4400A1DB59 /* RessetPasswordViewController.swift in Sources */,
 				0016074A2B52EFD700C1BFDD /* UIImageView+Extensions.swift in Sources */,
 				007028672B5C40EA00A51C26 /* VerificationViewController.swift in Sources */,
 				001607432B51B47200C1BFDD /* UITextField+Extensions.swift in Sources */,

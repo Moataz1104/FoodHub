@@ -300,7 +300,7 @@ class SignUpViewController: UIViewController {
         
         let mainButtonCons=[
             mainButton.centerXAnchor.constraint(equalTo: signUpView.centerXAnchor),
-            mainButton.widthAnchor.constraint(equalToConstant: 248),
+            mainButton.widthAnchor.constraint(equalToConstant: 260),
             mainButton.heightAnchor.constraint(equalToConstant: 60),
             mainButton.topAnchor.constraint(equalTo: signUpView.topAnchor, constant: 0)        
         ]
