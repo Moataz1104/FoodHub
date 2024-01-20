@@ -11,6 +11,10 @@ import RxSwift
 import RxCocoa
 
 class VerificationViewController:UIViewController{
+    private let viewModel = VerificationViewModel()
+    private let disposeBag = DisposeBag()
+    
+    
     
     //    MARK: - View Controller life cycle
 
@@ -18,6 +22,7 @@ class VerificationViewController:UIViewController{
         super.viewDidLoad()
         view.backgroundColor = .white
         navigationController?.navigationBar.isHidden=true
+        otpView.delegate = self
         setViewsHierarchy()
     }
     
@@ -106,6 +111,7 @@ class VerificationViewController:UIViewController{
         button.translatesAutoresizingMaskIntoConstraints=false
         return button
     }()
+    
 
     //    MARK: - Set Up Constraints
     private func setUpConstraints(){
@@ -138,14 +144,14 @@ class VerificationViewController:UIViewController{
             subTitle.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25)
         ]
         NSLayoutConstraint.activate(subTitleLabelCons)
-
-//        OTP View
+        
+        //        OTP View
         let otpViewCons = [
             otpView.topAnchor.constraint(equalTo: subTitle.bottomAnchor, constant: 40),
             otpView.widthAnchor.constraint(equalToConstant: view.frame.width),
             otpView.heightAnchor.constraint(equalToConstant: 80)
         ]
-
+        
         NSLayoutConstraint.activate(otpViewCons)
         otpView.initializeUI()
         
@@ -179,16 +185,34 @@ class VerificationViewController:UIViewController{
         view.addSubview(resendLabel)
         view.addSubview(resendButton)
 
+
     }
-    //    MARK: - Binding and Behavior
-
-
-      
-    //    MARK: - Navigation
+    
+//    MARK: - Navigation
 
     
     
-    //    MARK: - private functions
+ //    MARK: - private functions
 
+    
+    
 }
 
+
+//    MARK: -  OTPField View Delegate
+
+extension VerificationViewController: OTPFieldViewDelegate {
+    func shouldBecomeFirstResponderForOTP(otpTextFieldIndex index: Int) -> Bool {
+        true
+    }
+    
+    func enteredOTP(otp: String) {
+        viewModel.otpRelay.accept(otp)
+    }
+    
+    func hasEnteredAllOTP(hasEnteredAll: Bool) -> Bool {
+        return true
+    }
+    
+    
+}

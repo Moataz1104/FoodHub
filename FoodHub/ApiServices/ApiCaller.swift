@@ -51,6 +51,18 @@ class ApiCaller {
             }.observe(on: ConcurrentDispatchQueueScheduler(qos: .background))
     }
     
+    //    MARK: - Verify OTP
+    func verifyUserOtp(otp:String) -> Observable<VerificationModel> {
+            let body: [String: Any] = [
+                "otp":otp
+            ]
+            return buildRequest(method: "POST", pathComponent: "/otp", body: body)
+                .subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background))
+                .map { data in
+                    try! JSONDecoder().decode(VerificationModel.self, from: data)
+                }.observe(on: ConcurrentDispatchQueueScheduler(qos: .background))
+        }
+    
     
 //    MARK: - Bulding request
     private func buildRequest(method: String, pathComponent: String, body: [String: Any]?) -> Observable<Data> {
