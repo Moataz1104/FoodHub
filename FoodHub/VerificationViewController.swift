@@ -29,6 +29,7 @@ class VerificationViewController:UIViewController{
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         setUpConstraints()
+        subscribeToResultSubject()
     }
     
     //    MARK: - Views
@@ -188,13 +189,34 @@ class VerificationViewController:UIViewController{
 
     }
     
+    
+//    MARK: - Subscribtion
+    
+    private func subscribeToResultSubject(){
+        viewModel.resultSubject.observe(on: MainScheduler.instance)
+            .subscribe {[weak self] event in
+                guard let self = self else {return}
+                switch event.element!{
+                case .success(let result):
+                    print(result)
+                case .failure(let errorMessage):
+                    self.present(requestAlert(title: "Error", message: errorMessage), animated: true)
+                }
+            }.disposed(by: disposeBag)
+        
+    }
 //    MARK: - Navigation
 
     
     
  //    MARK: - private functions
 
-    
+    private func requestAlert(title:String , message:String)-> UIAlertController{
+        let alert = UIAlertController(title:title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default))
+        return alert
+    }
+
     
 }
 
