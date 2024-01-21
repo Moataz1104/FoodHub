@@ -105,11 +105,8 @@
 		0016073A2B4EDADE00C1BFDD /* App */ = {
 			isa = PBXGroup;
 			children = (
-				0016073B2B4EDAE900C1BFDD /* WelcomeScreen */,
-				001607522B534BB300C1BFDD /* SignUpScreen */,
-				0070285E2B5AF26E00A51C26 /* LogInScreen */,
-				007028652B5C40A900A51C26 /* VerificationScreen */,
-				0052AD9F2B5C8B1400A1DB59 /* RessetPasswordScreen */,
+				0052ADA22B5C921200A1DB59 /* Authentication */,
+				0052ADA32B5C92A600A1DB59 /* Main */,
 			);
 			name = App;
 			sourceTree = "<group>";
@@ -190,6 +187,33 @@
 				0052ADA02B5C8B4400A1DB59 /* RessetPasswordViewController.swift */,
 			);
 			name = RessetPasswordScreen;
+			sourceTree = "<group>";
+		};
+		0052ADA22B5C921200A1DB59 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				0016073B2B4EDAE900C1BFDD /* WelcomeScreen */,
+				001607522B534BB300C1BFDD /* SignUpScreen */,
+				0070285E2B5AF26E00A51C26 /* LogInScreen */,
+				007028652B5C40A900A51C26 /* VerificationScreen */,
+				0052AD9F2B5C8B1400A1DB59 /* RessetPasswordScreen */,
+			);
+			name = Authentication;
+			sourceTree = "<group>";
+		};
+		0052ADA32B5C92A600A1DB59 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				0052ADA42B5C92DC00A1DB59 /* HomeScreen */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
+		0052ADA42B5C92DC00A1DB59 /* HomeScreen */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = HomeScreen;
 			sourceTree = "<group>";
 		};
 		0070285E2B5AF26E00A51C26 /* LogInScreen */ = {
