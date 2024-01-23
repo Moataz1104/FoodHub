@@ -25,6 +25,9 @@
 		0045263C2B4DD9720035F0C0 /* FoodHub.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0045263A2B4DD9720035F0C0 /* FoodHub.xcdatamodeld */; };
 		0045263E2B4DD9730035F0C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0045263D2B4DD9730035F0C0 /* Assets.xcassets */; };
 		004526412B4DD9730035F0C0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0045263F2B4DD9730035F0C0 /* LaunchScreen.storyboard */; };
+		004735772B5EE8BB0070F0EC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004735762B5EE8BB0070F0EC /* HomeViewController.swift */; };
+		004735792B5EE8CD0070F0EC /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004735782B5EE8CD0070F0EC /* MenuViewController.swift */; };
+		0047357B2B5F34A40070F0EC /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0047357A2B5F34A40070F0EC /* MenuViewModel.swift */; };
 		0052ADA12B5C8B4400A1DB59 /* RessetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0052ADA02B5C8B4400A1DB59 /* RessetPasswordViewController.swift */; };
 		007028602B5AF29700A51C26 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0070285F2B5AF29700A51C26 /* LogInViewController.swift */; };
 		007028622B5B1D8C00A51C26 /* LogInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007028612B5B1D8C00A51C26 /* LogInViewModel.swift */; };
@@ -56,6 +59,9 @@
 		0045263D2B4DD9730035F0C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		004526402B4DD9730035F0C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		004526422B4DD9730035F0C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		004735762B5EE8BB0070F0EC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		004735782B5EE8CD0070F0EC /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		0047357A2B5F34A40070F0EC /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
 		0052ADA02B5C8B4400A1DB59 /* RessetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RessetPasswordViewController.swift; sourceTree = "<group>"; };
 		0070285F2B5AF29700A51C26 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		007028612B5B1D8C00A51C26 /* LogInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewModel.swift; sourceTree = "<group>"; };
@@ -181,6 +187,23 @@
 			path = FoodHub;
 			sourceTree = "<group>";
 		};
+		004735742B5EE87C0070F0EC /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				004735762B5EE8BB0070F0EC /* HomeViewController.swift */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
+		004735752B5EE8A10070F0EC /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				004735782B5EE8CD0070F0EC /* MenuViewController.swift */,
+				0047357A2B5F34A40070F0EC /* MenuViewModel.swift */,
+			);
+			name = Menu;
+			sourceTree = "<group>";
+		};
 		0052AD9F2B5C8B1400A1DB59 /* RessetPasswordScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -212,6 +235,8 @@
 		0052ADA42B5C92DC00A1DB59 /* HomeScreen */ = {
 			isa = PBXGroup;
 			children = (
+				004735742B5EE87C0070F0EC /* Home */,
+				004735752B5EE8A10070F0EC /* Menu */,
 			);
 			name = HomeScreen;
 			sourceTree = "<group>";
@@ -378,16 +403,19 @@
 				007028622B5B1D8C00A51C26 /* LogInViewModel.swift in Sources */,
 				007028602B5AF29700A51C26 /* LogInViewController.swift in Sources */,
 				0016075D2B56C25600C1BFDD /* RegisterModel.swift in Sources */,
+				004735772B5EE8BB0070F0EC /* HomeViewController.swift in Sources */,
 				0016075B2B55D59B00C1BFDD /* ApiCaller.swift in Sources */,
 				001607562B5490FF00C1BFDD /* TextFieldValidation.swift in Sources */,
 				004526322B4DD9720035F0C0 /* AppDelegate.swift in Sources */,
 				001607582B54912700C1BFDD /* SignUpViewModel.swift in Sources */,
+				004735792B5EE8CD0070F0EC /* MenuViewController.swift in Sources */,
 				0016074D2B52FEB600C1BFDD /* Constants.swift in Sources */,
 				001607542B534BFE00C1BFDD /* SignUpViewController.swift in Sources */,
 				001607512B534A5700C1BFDD /* WelcomeViewModel.swift in Sources */,
 				004526342B4DD9720035F0C0 /* SceneDelegate.swift in Sources */,
 				0045263C2B4DD9720035F0C0 /* FoodHub.xcdatamodeld in Sources */,
 				00B3E6B62B5C517E005EEE92 /* VerificationViewModel.swift in Sources */,
+				0047357B2B5F34A40070F0EC /* MenuViewModel.swift in Sources */,
 				0016073F2B4F28E100C1BFDD /* UIButton+Extensions.swift in Sources */,
 				001607412B51AAB300C1BFDD /* UILabel+Extensions.swift in Sources */,
 			);
